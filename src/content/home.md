@@ -5,8 +5,8 @@ avatarImage:
 githubCalendar: 'orfloresti'
 ---
 
-Hola me llamo Orlando Flores Teomitzi un ingeniero de software orientado a la innovación tecnológica, con motivación por comprender cómo funcionan los sistemas y desarrollar soluciones que integren eficiencia, funcionalidad y valor para los usuarios.
+Hi, I'm Orlando Flores Teomitzi — an engineer focused on technological innovation, driven by a desire to understand how systems work and to develop solutions that combine efficiency, functionality, and value for users.
 
-Mi enfoque es la creación de herramientas para análisis y monitorización. Mi stack incluye React.js, Angular, TypeScript, AWS, Python y PostgreSQL, y me mantengo en constante aprendizaje para incorporar nuevas tecnologías y mejores prácticas en mi trabajo.
+My main focus is on building tools for analysis and monitoring. My tech stack includes React.js, Angular, TypeScript, AWS, Python, and PostgreSQL, and I’m constantly learning to incorporate new technologies and best practices into my work.
 
-Mi objetivo es desarrollar soluciones tecnológicas que hagan la vida más simple, conectada y significativa.
+My goal is to develop technological solutions that make life simpler, more connected, and more meaningful.
