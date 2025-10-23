@@ -3,7 +3,7 @@ layout: '~/layouts/MarkdownLayout.astro'
 title: About Me
 ---
 
-I am a software engineer focused on technological innovation, driven by a desire to understand how systems work and to develop solutions that combine efficiency, functionality, and value for users.
+I am a engineer focused on technological innovation, driven by a desire to understand how systems work and to develop solutions that combine efficiency, functionality, and value for users.
 
 I began my journey with a bachelor’s degree in electronics, which gave me a strong foundation in problem-solving and systems thinking. Over time, I discovered my passion for software development — a perfect blend of creativity, logic, and the opportunity to build solutions that truly help people.
 
