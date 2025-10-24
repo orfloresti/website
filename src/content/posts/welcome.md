@@ -2,7 +2,7 @@
 title: 'Welcome'
 published: 2025-10-23
 draft: false
-description: 'Greeting for my website'
+description: 'Welcome note for my website'
 tags: ['personal']
 ---
 
