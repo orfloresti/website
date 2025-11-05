@@ -4,7 +4,7 @@ const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
   site: 'https://orfloresti.dev',
   // The name of your site, used in the title and for SEO.
-  title: 'orfloresti',
+  title: 'Orlando Flores Teomitzi',
   // The description of your site, used for SEO and RSS feed.
   description:
     'A personal blog about web development, and other tech topics by Orlando Flores Teomitzi.',
