@@ -1,5 +1,6 @@
 <script>
   const SELECTOR = 'pre.mermaid'
+  let diagramCounter = 0
 
   // Reads a CSS variable and normalizes it to a color mermaid can parse (hex/rgb).
   function readColor(name: string, fallback: string): string {
@@ -17,11 +18,19 @@
     if (nodes.length === 0) return
     const { default: mermaid } = await import('mermaid')
 
+    // Mermaid measures text to size the boxes, so the site font must be loaded first,
+    // otherwise a fallback font is measured and the real text gets clipped.
+    const fontFamily = getComputedStyle(nodes[0]).fontFamily
+    try {
+      await document.fonts.load(`16px ${fontFamily}`)
+      await document.fonts.ready
+    } catch {
+      // Rendering still works with whatever font is available.
+    }
+
     // Keep the original source so diagrams can be re-rendered on theme change.
     nodes.forEach((node) => {
       if (!node.dataset.source) node.dataset.source = node.textContent ?? ''
-      node.removeAttribute('data-processed')
-      node.textContent = node.dataset.source
     })
 
     const background = readColor('--theme-background', '#ffffff')
@@ -63,17 +72,39 @@
         activationBkgColor: separator,
         activationBorderColor: accent,
         sequenceNumberColor: background,
-        fontFamily: 'inherit',
+        fontFamily,
       },
     })
-    await mermaid.run({ nodes: Array.from(nodes) })
+
+    // Render one by one with our own ids. mermaid.run() derives ids from Date.now(), so diagrams
+    // rendered in the same millisecond share an id and end up drawn on top of each other.
+    for (const node of nodes) {
+      try {
+        const { svg, bindFunctions } = await mermaid.render(
+          `mermaid-diagram-${diagramCounter++}`,
+          node.dataset.source ?? '',
+        )
+        node.innerHTML = svg
+        bindFunctions?.(node)
+      } catch (error) {
+        console.error('Mermaid render failed', error)
+      }
+    }
   }
 
-  renderDiagrams()
+  // Renders must not overlap: concurrent runs over the same nodes draw diagrams on top of each other.
+  let queue: Promise<void> = Promise.resolve()
+  function scheduleRender() {
+    queue = queue
+      .then(renderDiagrams)
+      .catch((error) => console.error('Mermaid render failed', error))
+  }
+
+  scheduleRender()
 
   // Re-render when the site theme changes (data-theme attribute on <html>).
   if (document.querySelector(SELECTOR)) {
-    new MutationObserver(() => renderDiagrams()).observe(document.documentElement, {
+    new MutationObserver(scheduleRender).observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme'],
     })
