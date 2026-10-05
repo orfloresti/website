@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap'
 import mdx from '@astrojs/mdx'
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import expressiveCode from 'astro-expressive-code'
 import siteConfig from './src/site.config'
@@ -31,33 +31,36 @@ export default defineConfig({
   trailingSlash: siteConfig.trailingSlashes ? 'always' : 'never',
   prefetch: true,
   markdown: {
-    remarkPlugins: [
-      [remarkDescription, { maxChars: 200 }],
-      remarkReadingTime,
-      remarkDirective,
-      remarkGithubCard,
-      remarkAdmonitions,
-      [remarkCharacterDialogue, { characters: siteConfig.characters }],
-      remarkUnknownDirectives,
-      remarkMath,
-      remarkGemoji,
-      remarkMermaid,
-    ],
-    rehypePlugins: [
-      [rehypeHeadingIds, { headingIdCompat: true }],
-      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-      rehypeTitleFigure,
-      [
-        rehypeExternalLinks,
-        {
-          rel: ['noreferrer', 'noopener'],
-          target: '_blank',
-        },
+    // Astro 7 defaults to Sätteri; keep the unified pipeline so the custom remark/rehype plugins run.
+    processor: unified({
+      remarkPlugins: [
+        [remarkDescription, { maxChars: 200 }],
+        remarkReadingTime,
+        remarkDirective,
+        remarkGithubCard,
+        remarkAdmonitions,
+        [remarkCharacterDialogue, { characters: siteConfig.characters }],
+        remarkUnknownDirectives,
+        remarkMath,
+        remarkGemoji,
+        remarkMermaid,
       ],
-      rehypeUnwrapImages,
-      rehypePixelated,
-      rehypeKatex,
-    ],
+      rehypePlugins: [
+        [rehypeHeadingIds, { headingIdCompat: true }],
+        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+        rehypeTitleFigure,
+        [
+          rehypeExternalLinks,
+          {
+            rel: ['noreferrer', 'noopener'],
+            target: '_blank',
+          },
+        ],
+        rehypeUnwrapImages,
+        rehypePixelated,
+        rehypeKatex,
+      ],
+    }),
   },
   image: {
     responsiveStyles: true,
