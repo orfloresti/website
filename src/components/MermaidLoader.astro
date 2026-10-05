@@ -1,0 +1,81 @@
+<script>
+  const SELECTOR = 'pre.mermaid'
+
+  // Reads a CSS variable and normalizes it to a color mermaid can parse (hex/rgb).
+  function readColor(name: string, fallback: string): string {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+    if (!raw) return fallback
+    const ctx = document.createElement('canvas').getContext('2d')
+    if (!ctx) return raw
+    ctx.fillStyle = '#000'
+    ctx.fillStyle = raw
+    return ctx.fillStyle
+  }
+
+  async function renderDiagrams() {
+    const nodes = document.querySelectorAll<HTMLElement>(SELECTOR)
+    if (nodes.length === 0) return
+    const { default: mermaid } = await import('mermaid')
+
+    // Keep the original source so diagrams can be re-rendered on theme change.
+    nodes.forEach((node) => {
+      if (!node.dataset.source) node.dataset.source = node.textContent ?? ''
+      node.removeAttribute('data-processed')
+      node.textContent = node.dataset.source
+    })
+
+    const background = readColor('--theme-background', '#ffffff')
+    const foreground = readColor('--theme-foreground', '#000000')
+    const accent = readColor('--theme-accent', '#3366cc')
+    const separator = readColor('--theme-separator', '#888888')
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      themeVariables: {
+        background,
+        primaryColor: background,
+        primaryTextColor: foreground,
+        primaryBorderColor: accent,
+        secondaryColor: background,
+        tertiaryColor: background,
+        lineColor: separator,
+        textColor: foreground,
+        mainBkg: background,
+        nodeBorder: accent,
+        clusterBkg: background,
+        clusterBorder: separator,
+        edgeLabelBackground: background,
+        actorBkg: background,
+        actorBorder: accent,
+        actorTextColor: foreground,
+        actorLineColor: separator,
+        signalColor: foreground,
+        signalTextColor: foreground,
+        labelBoxBkgColor: background,
+        labelBoxBorderColor: separator,
+        labelTextColor: foreground,
+        loopTextColor: foreground,
+        noteBkgColor: background,
+        noteBorderColor: accent,
+        noteTextColor: foreground,
+        activationBkgColor: separator,
+        activationBorderColor: accent,
+        sequenceNumberColor: background,
+        fontFamily: 'inherit',
+      },
+    })
+    await mermaid.run({ nodes: Array.from(nodes) })
+  }
+
+  renderDiagrams()
+
+  // Re-render when the site theme changes (data-theme attribute on <html>).
+  if (document.querySelector(SELECTOR)) {
+    new MutationObserver(() => renderDiagrams()).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    })
+  }
+</script>
