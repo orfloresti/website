@@ -2,11 +2,19 @@
 import '@pagefind/default-ui/css/ui.css'
 import IconCircleX from '~/icons/circle-x.svg'
 import IconSearch from '~/icons/search.svg'
+import { getLangFromUrl, pagefindTranslations, useTranslations } from '~/i18n'
 
 const { trailingSlashes = false } = Astro.props
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
-<site-search class="ms-auto" id="search" data-trailing-slashes={trailingSlashes}>
+<site-search
+  class="ms-auto"
+  id="search"
+  data-trailing-slashes={trailingSlashes}
+  data-pagefind-translations={JSON.stringify(pagefindTranslations[lang] ?? {})}
+>
   <button
     class="hover:text-accent flex cursor-pointer items-center justify-center rounded-md"
     aria-keyshortcuts="Control+K Meta+K"
@@ -14,10 +22,10 @@ const { trailingSlashes = false } = Astro.props
     disabled
   >
     <IconSearch class="size-6 text-accent" />
-    <span class="sr-only">Open Search</span>
+    <span class="sr-only">{t('search.open')}</span>
   </button>
   <dialog
-    aria-label="search"
+    aria-label={t('search.label')}
     class="text-foreground! bg-background max-h-5/6 min-h-48 w-7/8 sm:w-5/6 max-w-xl border-double! border-4 border-accent/30 shadow-sm backdrop:backdrop-blur-sm open:flex mx-auto mt-10 sm:mt-16 mb-auto rounded-xl"
   >
     <div class="dialog-frame flex grow flex-col gap-4 p-6 pt-6 max-w-full">
@@ -27,8 +35,8 @@ const { trailingSlashes = false } = Astro.props
       {import.meta.env.DEV ? (
         <div class="mx-auto text-center">
           <p>
-            Search is only available in production builds. <br />
-            Try building and previewing the site to test it out locally.
+            {t('search.devOnly')} <br />
+            {t('search.devHint')}
           </p>
         </div>
       ) : (
@@ -139,6 +147,7 @@ const { trailingSlashes = false } = Astro.props
           element: '#pagefind-search',
           showImages: false,
           showSubResults: true,
+          translations: JSON.parse(this.dataset.pagefindTranslations || '{}'),
           processResult: (result: {
             url: string
             sub_results: Array<{ url: string }>

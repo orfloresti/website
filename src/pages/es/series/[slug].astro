@@ -4,10 +4,10 @@ import SeriesView from '~/views/SeriesView.astro'
 import { seriesPaths } from '~/page-paths'
 
 export const getStaticPaths = (async () => {
-  return seriesPaths('en')
+  return seriesPaths('es')
 }) satisfies GetStaticPaths
 
 const { posts, seriesTitle } = Astro.props
 ---
 
-<SeriesView posts={posts} seriesTitle={seriesTitle} lang="en" />
+<SeriesView posts={posts} seriesTitle={seriesTitle} lang="es" />

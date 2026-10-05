@@ -1,0 +1,37 @@
+---
+import { langs, languages, localePath, useTranslations, type Lang } from '~/i18n'
+
+interface Props {
+  lang: Lang
+  // Path of the current page in each language. Falls back to that language's home.
+  alternates?: Partial<Record<Lang, string>>
+}
+
+const { lang, alternates = {} } = Astro.props
+const t = useTranslations(lang)
+---
+
+<nav aria-label={t('lang.label')} class="flex items-center gap-1 text-sm font-semibold">
+  {langs.map((code, index) => (
+    <>
+      {index > 0 && (
+        <span class="text-accent/40" aria-hidden="true">
+          /
+        </span>
+      )}
+      <a
+        href={alternates[code] ?? localePath(code, '/')}
+        hreflang={code}
+        lang={code}
+        title={languages[code]}
+        aria-current={code === lang ? 'true' : undefined}
+        class:list={[
+          'uppercase no-underline hover:text-accent',
+          code === lang ? 'text-accent' : 'text-foreground/60',
+        ]}
+      >
+        {code}
+      </a>
+    </>
+  ))}
+</nav>

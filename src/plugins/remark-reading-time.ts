@@ -10,6 +10,8 @@ const remarkReadingTime: RemarkPlugin = (_options?) => {
       // readingTime.text will give us minutes read as a friendly string,
       // i.e. "3 min read"
       data.astro.frontmatter.minutesRead = readingTime.text
+      // Numeric value so the UI can format it in the page language
+      data.astro.frontmatter.readingMinutes = Math.max(1, Math.ceil(readingTime.minutes))
     }
   }
 }

@@ -2,7 +2,7 @@
 import type { NavLink } from '~/types'
 
 interface Props {
-  link: NavLink
+  link: Omit<NavLink, 'key'> & { name: string }
 }
 
 const { link } = Astro.props

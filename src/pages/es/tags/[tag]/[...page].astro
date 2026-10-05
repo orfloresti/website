@@ -1,14 +1,14 @@
 ---
 import type { GetStaticPaths } from 'astro'
-import ArchiveView from '~/views/ArchiveView.astro'
-import { archivePaths } from '~/page-paths'
+import TagView from '~/views/TagView.astro'
+import { tagPaths } from '~/page-paths'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
-  return archivePaths(paginate, 'en')
+  return tagPaths(paginate, 'es')
 }) satisfies GetStaticPaths
 
-const { page } = Astro.props
+const { page, tagTitle } = Astro.props
 ---
 
-<ArchiveView page={page} lang="en" />
+<TagView page={page} tagTitle={tagTitle} lang="es" />

@@ -1,0 +1,41 @@
+---
+import type { Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import Layout from '~/layouts/Layout.astro'
+import Pagination from '~/components/Pagination.astro'
+import PostPreview from '~/components/PostPreview.astro'
+import PageHeader from '~/components/PageHeader.astro'
+import { useTranslations, type Lang } from '~/i18n'
+
+interface Props {
+  page: Page<CollectionEntry<'posts'>>
+  tagTitle: string
+  lang: Lang
+}
+
+const { page, tagTitle, lang } = Astro.props
+const t = useTranslations(lang)
+const pageTitle =
+  page.currentPage > 1
+    ? t('tag.titlePage', { tag: tagTitle, page: page.currentPage })
+    : t('tag.title', { tag: tagTitle })
+---
+
+<Layout
+  title={pageTitle}
+  description={t('tag.description', { tag: tagTitle })}
+  alternates={{}}
+>
+  <div class="mt-2 sm:mt-0">
+    <PageHeader titlePieces={[t('path.tags'), tagTitle]} />
+    {page.data.map((post) => (
+      <PostPreview post={post} />
+    ))}
+    <Pagination
+      prevLink={page.url.prev ? encodeURI(page.url.prev) : undefined}
+      prevText={t('pagination.newer')}
+      nextLink={page.url.next ? encodeURI(page.url.next) : undefined}
+      nextText={t('pagination.older')}
+    />
+  </div>
+</Layout>
