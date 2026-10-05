@@ -3,7 +3,7 @@
 ## Objective
 Publish a post about Cross-Site Scripting (XSS), paraphrased from the vault note
 `MyVault/Notebooks/cybersecurity/XSS Cross-Site Scripting.md`, with Mermaid diagrams
-rendered on the site. Published date: 2025-11-07 (first post 2025-10-23 + 15 days).
+rendered on the site. Published date: 2026-08-10 (creation date of the orfloresti/devtalks-xss repo).
 
 ## Problem
 The site has no Mermaid support: ```` ```mermaid ```` blocks render as plain code via Expressive Code.
@@ -22,7 +22,7 @@ The site has no Mermaid support: ```` ```mermaid ```` blocks render as plain cod
 
 ## Tasks
 - [x] T1 Mermaid support (remark plugin + astro.config + client loader + `mermaid` dependency). Route: delegated writer (needs layout/CSS research). Commit: 5431c53. Review tier: unassessable (untracked files) -> treated as high, review pending.
-- [x] T2 Post `src/content/posts/xss-cross-site-scripting.md`, published 2025-11-07, 7 Mermaid diagrams (after rewrite). Route: inline (single file, source content already in parent context).
+- [x] T2 Post `src/content/posts/xss-cross-site-scripting.md`, published 2026-08-10, 7 Mermaid diagrams (after rewrite). Route: inline (single file, source content already in parent context).
 
 ## Acceptance
 - `npm run build` succeeds; the post page contains rendered diagrams; other posts unaffected.
@@ -34,6 +34,8 @@ The site has no Mermaid support: ```` ```mermaid ```` blocks render as plain cod
 
 ## Accepted change
 - User asked for a shorter post, a journal-like first-person voice, and no examples (no real cases, no code scenarios). Post rewritten; diagrams kept (7).
+
+- User then asked to base the post on the `orfloresti/devtalks-xss` repo (5 demos), mention those demos, and use the repo creation date (2026-08-10) as the published date. Real-world cases stay out; the user's own demos are in.
 
 ## Next step
 Visual check in browser (`npm run dev`), then user decides on review/PR.
