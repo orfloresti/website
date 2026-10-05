@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { SeriesGroup } from '~/utils'
+import { getLangFromUrl } from '~/i18n'
 
 interface Props {
   posts: CollectionEntry<'posts'>[]
@@ -8,7 +9,7 @@ interface Props {
 
 const { posts } = Astro.props
 
-const seriesGroup = await SeriesGroup.build(posts)
+const seriesGroup = await SeriesGroup.build(posts, getLangFromUrl(Astro.url))
 ---
 
 <ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">

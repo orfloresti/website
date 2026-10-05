@@ -18,6 +18,7 @@ import type {
   GitHubActivityWeek,
   GitHubActivityMonthLabel,
 } from '~/types'
+import { getLangFromUrl, useTranslations } from '~/i18n'
 
 interface Props {
   username: string
@@ -161,6 +162,7 @@ function getMonthLabels(
 }
 
 const { username, year = 'last' } = Astro.props
+const t = useTranslations(getLangFromUrl(Astro.url))
 
 const data = await fetchData(username, year)
 
@@ -188,24 +190,14 @@ const firstActivity = activities[0]
 const activityYear = getYear(parseISO(firstActivity.date))
 const weeks = groupByWeeks(activities, weekStart)
 const labels = {
-  months: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ],
-  totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
+  months: t('calendar.months').split(','),
+  totalCount: t('calendar.total', {
+    count: '{{count}}',
+    period: year === 'last' ? t('calendar.lastYear') : '{{year}}',
+  }),
   legend: {
-    less: 'Less',
-    more: 'More',
+    less: t('calendar.less'),
+    more: t('calendar.more'),
   },
 }
 const labelHeight = hideMonthLabels ? 0 : fontSize + labelMargin

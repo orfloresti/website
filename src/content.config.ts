@@ -24,7 +24,10 @@ const postsCollection = defineCollection({
 })
 
 const homeCollection = defineCollection({
-  loader: glob({ pattern: ['home.md', 'home.mdx'], base: './src/content' }),
+  loader: glob({
+    pattern: ['home.md', 'home.mdx', 'home.es.md', 'home.es.mdx'],
+    base: './src/content',
+  }),
   schema: ({ image }) =>
     z.object({
       avatarImage: z
@@ -38,7 +41,10 @@ const homeCollection = defineCollection({
 })
 
 const addendumCollection = defineCollection({
-  loader: glob({ pattern: ['addendum.md', 'addendum.mdx'], base: './src/content' }),
+  loader: glob({
+    pattern: ['addendum.md', 'addendum.mdx', 'addendum.es.md', 'addendum.es.mdx'],
+    base: './src/content',
+  }),
   schema: ({ image }) =>
     z.object({
       avatarImage: z

@@ -3,6 +3,9 @@ import '@pagefind/default-ui/css/ui.css'
 import IconPalette from '~/icons/palette.svg'
 import IconCircleX from '~/icons/circle-x.svg'
 import siteConfig from '~/site.config'
+import { getLangFromUrl, useTranslations } from '~/i18n'
+
+const t = useTranslations(getLangFromUrl(Astro.url))
 
 function kebabToTitleCase(str: string): string {
   return str
@@ -20,7 +23,7 @@ function kebabToTitleCase(str: string): string {
     disabled
   >
     <IconPalette class="size-6 text-accent" />
-    <span class="sr-only">Select Theme</span>
+    <span class="sr-only">{t('theme.select')}</span>
   </button>
   <dialog
     aria-label="select-theme"

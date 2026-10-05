@@ -1,0 +1,75 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import { getLocalizedEntry, getSortedPosts } from '~/utils'
+import { render } from 'astro:content'
+import PostPreview from '~/components/PostPreview.astro'
+import Pagination from '~/components/Pagination.astro'
+import BlockHeader from '~/components/BlockHeader.astro'
+import HomeBanner from '~/components/HomeBanner.astro'
+import siteConfig from '~/site.config'
+import TagsSection from '~/components/TagsSection.astro'
+import SeriesSection from '~/components/SeriesSection.astro'
+import { localePath, useTranslations, type Lang } from '~/i18n'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+
+const homeEntry = await getLocalizedEntry('home', lang)
+let HomeContent
+let homeAvatarImage
+let homeGithubCalendar
+if (homeEntry) {
+  const { Content } = await render(homeEntry)
+  HomeContent = Content
+  homeAvatarImage = homeEntry.data.avatarImage
+  homeGithubCalendar = homeEntry.data.githubCalendar
+}
+const sortedPosts = await getSortedPosts(lang)
+const postsHaveTags = sortedPosts.some(
+  (post) => post.data.tags && post.data.tags.length > 0,
+)
+
+const postsHaveSeries = sortedPosts.some((post) => post.data.series)
+---
+
+<Layout>
+  {HomeContent && (
+    <HomeBanner avatarImage={homeAvatarImage} githubCalendar={homeGithubCalendar}>
+      <HomeContent />
+    </HomeBanner>
+  )}
+  {postsHaveSeries && (
+    <section>
+      <BlockHeader>{t('home.series')}</BlockHeader>
+      <SeriesSection posts={sortedPosts} />
+    </section>
+  )}
+  {postsHaveTags && (
+    <section>
+      <BlockHeader>{t('home.tags')}</BlockHeader>
+      <TagsSection posts={sortedPosts} />
+    </section>
+  )}
+  {sortedPosts.length > 0 && (
+    <section>
+      <BlockHeader>{t('home.latest')}</BlockHeader>
+      {sortedPosts
+        .reverse()
+        .slice(0, Math.floor(siteConfig.pageSize / 2))
+        .map((post) => (
+          <PostPreview post={post} />
+        ))}
+      <Pagination nextLink={localePath(lang, '/posts')} nextText={t('home.archive')} />
+    </section>
+  )}
+</Layout>
+
+<style is:global>
+  a.heading-anchor {
+    display: none !important;
+  }
+</style>

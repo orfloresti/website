@@ -6,22 +6,25 @@ import Tags from '~/components/Tags.astro'
 import PostInfo from '~/components/PostInfo.astro'
 import type { Collation } from '~/types'
 import { TagsGroup } from '~/utils'
+import { postLang, postPath, postSlug, useTranslations } from '~/i18n'
 
 interface Props {
   post: CollectionEntry<'posts'>
 }
 
 const { post } = Astro.props
+const lang = postLang(post)
+const t = useTranslations(lang)
 
 const { remarkPluginFrontmatter } = await render(post)
 const description = remarkPluginFrontmatter.description || post.data.description
 let tags: Collation<'posts'>[] | undefined
 if (post.data.tags && post.data.tags.length > 0) {
-  const tagsGroup = await TagsGroup.build()
+  const tagsGroup = await TagsGroup.build(undefined, lang)
   tags = tagsGroup.matchMany(post.data.tags)
 }
-const samePage = Astro.url.pathname === `/posts/${post.id}`
-const articleLink = samePage ? `#${post.id}` : `/posts/${post.id}`
+const samePage = Astro.url.pathname === postPath(post)
+const articleLink = samePage ? `#${postSlug(post)}` : postPath(post)
 ---
 
 <article class="w-full py-5 my-1 md:my-4 border-accent/10">
@@ -37,7 +40,7 @@ const articleLink = samePage ? `#${post.id}` : `/posts/${post.id}`
   )}
   <div>
     <a class="button flex items-center !pl-3.5" href={articleLink}>
-      {samePage ? 'Continue' : 'Read'}
+      {samePage ? t('post.continue') : t('post.read')}
       <IconChevronsRight class="size-5 ml-2" />
     </a>
   </div>

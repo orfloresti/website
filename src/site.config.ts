@@ -29,19 +29,19 @@ const config: SiteConfig = {
   // The navigation links to display in the header.
   navLinks: [
     {
-      name: 'Home',
+      key: 'nav.home',
       url: '/',
     },
     {
-      name: 'About',
+      key: 'nav.about',
       url: '/about',
     },
     {
-      name: 'Archive',
+      key: 'nav.archive',
       url: '/posts',
     },
     {
-      name: 'GitHub',
+      key: 'nav.github',
       url: 'https://github.com/orfloresti',
       external: true,
     },

@@ -7,12 +7,14 @@ import IconLinkedin from '~/icons/linkedin.svg'
 import IconBluesky from '~/icons/bluesky.svg'
 import IconEmail from '~/icons/email.svg'
 import IconRss from '~/icons/rss.svg'
+import { getLangFromUrl, localePath } from '~/i18n'
 
 interface Props {
   socialLinks: SocialLinks
 }
 
 const { socialLinks } = Astro.props
+const lang = getLangFromUrl(Astro.url)
 ---
 
 <div class="flex w-full max-w-md items-center justify-between">
@@ -83,7 +85,7 @@ const { socialLinks } = Astro.props
     </a>
   )}
   {socialLinks.rss && (
-    <a href="/rss.xml" class="social-link">
+    <a href={localePath(lang, '/rss.xml')} class="social-link">
       <span class="sr-only">RSS</span>
       <IconRss class="size-7" />
     </a>

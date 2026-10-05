@@ -5,10 +5,10 @@ import { archivePaths } from '~/page-paths'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
-  return archivePaths(paginate, 'en')
+  return archivePaths(paginate, 'es')
 }) satisfies GetStaticPaths
 
 const { page } = Astro.props
 ---
 
-<ArchiveView page={page} lang="en" />
+<ArchiveView page={page} lang="es" />

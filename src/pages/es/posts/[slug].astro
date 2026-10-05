@@ -4,7 +4,7 @@ import PostView from '~/views/PostView.astro'
 import { postPaths } from '~/page-paths'
 
 export const getStaticPaths = (async () => {
-  return postPaths('en')
+  return postPaths('es')
 }) satisfies GetStaticPaths
 
 const { post, prev, next, alternates } = Astro.props

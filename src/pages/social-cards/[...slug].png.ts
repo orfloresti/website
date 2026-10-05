@@ -4,6 +4,7 @@ import type { APIContext, InferGetStaticPropsType } from 'astro'
 import satori, { type SatoriOptions } from 'satori'
 import { html } from 'satori-html'
 import { dateString, getSortedPosts, resolveThemeColorStyles } from '~/utils'
+import { langs, postSlug } from '~/i18n'
 import path from 'path'
 import fs from 'fs'
 import type { ReactNode } from 'react'
@@ -90,16 +91,21 @@ export async function GET(context: APIContext) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getSortedPosts()
-  return posts
-    .map((post) => ({
-      params: { slug: post.id },
-      props: {
-        pubDate: post.data.published ? dateString(post.data.published) : undefined,
-        title: post.data.title,
-        author: post.data.author || siteConfig.author,
-      },
-    }))
+  // English cards live at /social-cards/<slug>.png, others at /social-cards/<lang>/<slug>.png
+  const postsByLang = await Promise.all(
+    langs.map(async (lang) => ({ lang, posts: await getSortedPosts(lang) })),
+  )
+  return postsByLang
+    .flatMap(({ lang, posts }) =>
+      posts.map((post) => ({
+        params: { slug: lang === 'en' ? postSlug(post) : `${lang}/${postSlug(post)}` },
+        props: {
+          pubDate: post.data.published ? dateString(post.data.published) : undefined,
+          title: post.data.title,
+          author: post.data.author || siteConfig.author,
+        },
+      })),
+    )
     .concat([
       {
         params: { slug: '__default' },
