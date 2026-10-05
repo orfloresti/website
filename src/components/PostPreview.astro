@@ -30,13 +30,11 @@ const articleLink = samePage ? `#${post.id}` : `/posts/${post.id}`
   </h1>
   <PostInfo post={post} class="mb-3 mt-4" />
   {description && <p class="pl-0.5 my-4 text-base/7 text-foreground">{description}</p>}
-  {
-    tags && (
-      <div class="mb-6">
-        <Tags tags={tags} />
-      </div>
-    )
-  }
+  {tags && (
+    <div class="mb-6">
+      <Tags tags={tags} />
+    </div>
+  )}
   <div>
     <a class="button flex items-center !pl-3.5" href={articleLink}>
       {samePage ? 'Continue' : 'Read'}

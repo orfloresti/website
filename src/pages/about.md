@@ -12,4 +12,3 @@ I’m self-taught in most of the technologies I use today and constantly explori
 My main focus is frontend development, though I also have backend experience. I specialize in building clean, efficient, and user-friendly applications, primarily using React, Angular, Node.js, AWS, SQL, and Python — combining technical precision with thoughtful design.
 
 When I’m not coding, you’ll probably find me reading about new tech trends, playing chess, or spending time with my family, who keep me active and grounded.
-
