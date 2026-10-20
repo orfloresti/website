@@ -187,9 +187,6 @@ importers:
       '@expressive-code/plugin-line-numbers':
         specifier: ^0.44.2
         version: 0.44.2
-      '@fontsource-variable/jetbrains-mono':
-        specifier: ^5.2.6
-        version: 5.3.0
       '@pagefind/default-ui':
         specifier: ^1.4.0
         version: 1.5.2
@@ -811,9 +808,6 @@ packages:
 
   '@expressive-code/plugin-text-markers@0.44.2':
     resolution: {integrity: sha512-SNI7EgUSiADqbqUzzMbj1ZeC/r2pa5eg3KyFOGAd3a7EsIA4qzjXQLp+ODWQtHVDKFCdGs4J3ovSJUqvKIK96g==}
-
-  '@fontsource-variable/jetbrains-mono@5.3.0':
-    resolution: {integrity: sha512-F32xpS2NsGYoQi2ADSkKTgpJj7ozajsGgDJ8woTnqjmIB+dxDIqImjl4pXZVEExu8UFZ2ndhmX18EBS/hdz3Lw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4010,8 +4004,6 @@ snapshots:
   '@expressive-code/plugin-text-markers@0.44.2':
     dependencies:
       '@expressive-code/core': 0.44.2
-
-  '@fontsource-variable/jetbrains-mono@5.3.0': {}
 
   '@iconify/types@2.0.0': {}
 

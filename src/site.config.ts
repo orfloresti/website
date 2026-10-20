@@ -16,9 +16,10 @@ const config: SiteConfig = {
   // Needs to be a square JPEG file due to limitations of the social card generator.
   // Try https://squoosh.app/ to easily convert images to JPEG.
   socialCardAvatarImage: './src/content/avatar.jpg',
-  // Font imported from @fontsource or elsewhere, used for the entire site.
-  // To change this see src/styles/global.css and import a different font.
-  font: 'JetBrains Mono Variable',
+  // Monospace font stack for headings, UI and code. Only system-installed fonts are used,
+  // so nothing is bundled: JetBrains Mono if the reader has it, then each OS's default mono.
+  // Long-form text uses the system sans-serif stack (--font-reading in src/styles/global.css).
+  font: "'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, 'Cascadia Code', 'Cascadia Mono', Consolas, 'Liberation Mono', 'DejaVu Sans Mono'",
   // For pagination, the number of posts to display per page.
   // The homepage will display half this number in the "Latest Posts" section.
   pageSize: 6,

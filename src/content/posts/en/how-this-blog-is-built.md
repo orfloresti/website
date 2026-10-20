@@ -13,7 +13,7 @@ This blog is a static site. There is no server and no database: every page is bu
 - **Astro.** The framework that turns Markdown into HTML. I started from the [MultiTerm](https://github.com/stelcodes/multiterm-astro) template and adapted it.
 - **Markdown and MDX.** Each post is a file in the repo. The English version lives in `posts/en/` and the Spanish one in `posts/es/`, with the same file name.
 - **Remark and rehype plugins.** They run during the build and add things to the Markdown: reading time, an automatic description, notes and warnings, GitHub cards, math with KaTeX, emoji and diagrams with Mermaid.
-- **Tailwind CSS.** For the styles. The text uses the reader's system sans-serif font (San Francisco, Segoe UI, Roboto...), which is easier to read in long posts and needs no download. Headings and code keep JetBrains Mono.
+- **Tailwind CSS.** For the styles. The text uses the reader's system sans-serif font (San Francisco, Segoe UI, Roboto...), which is easier to read in long posts and needs no download. Headings and code use JetBrains Mono if the reader has it installed, or the system's monospace font. No font files are bundled with the site.
 - **Expressive Code.** For the code blocks, using the same themes the reader can pick for the whole site.
 - **Pagefind.** The search. It builds an index after the site is generated, and the search runs in the browser.
 - **Satori and Resvg.** They generate the preview image you see when a post is shared on social media.
