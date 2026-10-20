@@ -57,7 +57,7 @@ Pushing to `main` updates the live site. Pushing to any other branch gives me a 
 
 ## What it costs
 
-Hosting costs nothing. Cloudflare Pages' free plan is enough for a static blog, and since there is no server or database, there is nothing else to pay for.
+Hosting costs nothing. I use Cloudflare Pages' free plan, which is enough for a static blog, and since there is no server or database, there is nothing else to pay for.
 
 ## Why this setup
 

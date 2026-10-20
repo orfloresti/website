@@ -57,7 +57,7 @@ Un push a `main` actualiza el sitio en vivo. Un push a cualquier otra rama me da
 
 ## Cuánto cuesta
 
-Hospedarlo no cuesta nada. El plan gratuito de Cloudflare Pages alcanza para un blog estático, y como no hay servidor ni base de datos, no hay nada más que pagar.
+Hospedarlo no cuesta nada. Uso el plan gratuito de Cloudflare Pages, que alcanza para un blog estático, y como no hay servidor ni base de datos, no hay nada más que pagar.
 
 ## Por qué así
 
