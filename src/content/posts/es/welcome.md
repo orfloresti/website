@@ -6,6 +6,6 @@ description: 'Nota de bienvenida a mi sitio web'
 tags: ['personal']
 ---
 
-Me alegra que estés aquí. Este espacio es donde comparto mi recorrido por la tecnología, la creatividad y el aprendizaje continuo. Encontrarás publicaciones sobre desarrollo de software, proyectos personales y reflexiones sobre temas variados que me inspiran, desde la innovación y el diseño hasta la productividad y las lecciones de vida.
+Este es mi espacio para escribir lo que aprendo. Vas a encontrar notas de estudio (como el modelo C4 o XSS, con demos propias), cómo construyo y despliego software, y reflexiones sobre proyectos y negocios: qué funcionó, qué no y por qué.
 
-Mi objetivo es crear contenido que no solo muestre mi trabajo, sino que también aporte valor a quienes comparten la misma curiosidad y pasión por la tecnología. Ya sea que vengas a explorar ideas, aprender algo nuevo o simplemente inspirarte, espero que disfrutes tu visita y encuentres algo significativo.
+Escribo en español y en inglés.

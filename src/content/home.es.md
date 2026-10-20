@@ -5,6 +5,6 @@ avatarImage:
 githubCalendar: 'orfloresti'
 ---
 
-Hola, soy Orlando Flores Teomitzi (orfloresti), ingeniero enfocado en la innovación tecnológica, impulsado por el deseo de entender cómo funcionan los sistemas y de desarrollar soluciones que combinen eficiencia, funcionalidad y valor para los usuarios.
+Hola, soy Orlando Flores Teomitzi (orfloresti). Soy ingeniero en electrónica y hoy trabajo como desarrollador de software, principalmente en frontend con Angular y React, y cada vez más en backend con Python, AWS y PostgreSQL.
 
-Mi enfoque principal es construir herramientas de análisis y monitoreo. Mi stack incluye React.js, Angular, TypeScript, AWS, Python y PostgreSQL, y estoy aprendiendo constantemente para incorporar nuevas tecnologías y buenas prácticas a mi trabajo.
+Aquí escribo lo que aprendo construyendo cosas: arquitectura, seguridad web, infraestructura y las lecciones de los proyectos que funcionaron y de los que no.

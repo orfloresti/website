@@ -3,12 +3,10 @@ layout: '~/layouts/MarkdownLayout.astro'
 title: About Me
 ---
 
-I am a engineer focused on technological innovation, driven by a desire to understand how systems work and to develop solutions that combine efficiency, functionality, and value for users.
+I studied Electronics Engineering at UDLAP. It taught me to understand a system from the bottom up, from the circuit to the code, and that way of thinking is still the base of how I work.
 
-I began my journey with a bachelor’s degree in electronics, which gave me a strong foundation in problem-solving and systems thinking. Over time, I discovered my passion for software development — a perfect blend of creativity, logic, and the opportunity to build solutions that truly help people.
+In 2020 I co-founded a small tech company. We designed circuits, maintained industrial equipment, built custom software for clients and sold electronics online. I learned as much from what worked as from what didn't: quoting well, protecting margins and choosing where to spend my time.
 
-I’m self-taught in most of the technologies I use today and constantly exploring new tools and frameworks to stay sharp and inspired. I enjoy sharing what I learn — whether through mentoring, collaborating on projects, or simply exchanging ideas with other curious minds.
+Today I work as a software developer. My strength is the frontend with Angular, React and TypeScript, and I also build backend and infrastructure with Python, FastAPI, PostgreSQL, AWS and Terraform. I care about building software for real, concrete problems and about writing clear specs before writing code.
 
-My main focus is frontend development, though I also have backend experience. I specialize in building clean, efficient, and user-friendly applications, primarily using React, Angular, Node.js, AWS, SQL, and Python — combining technical precision with thoughtful design.
-
-When I’m not coding, you’ll probably find me reading about new tech trends, playing chess, or spending time with my family, who keep me active and grounded.
+Outside work I read, play chess, ride my bike early in the morning and spend time with my family.

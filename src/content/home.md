@@ -5,6 +5,6 @@ avatarImage:
 githubCalendar: 'orfloresti'
 ---
 
-Hi, I'm Orlando Flores Teomitzi (orfloresti) — an engineer focused on technological innovation, driven by a desire to understand how systems work and to develop solutions that combine efficiency, functionality, and value for users.
+Hi, I'm Orlando Flores Teomitzi (orfloresti). I'm an electronics engineer working as a software developer, mostly on the frontend with Angular and React, and more and more on the backend with Python, AWS and PostgreSQL.
 
-My main focus is on building tools for analysis and monitoring. My tech stack includes React.js, Angular, TypeScript, AWS, Python, and PostgreSQL, and I’m constantly learning to incorporate new technologies and best practices into my work.
+Here I write about what I learn by building things: architecture, web security, infrastructure, and lessons from the projects that worked and the ones that didn't.
