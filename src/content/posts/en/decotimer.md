@@ -79,6 +79,4 @@ The relay switches the 127 V from the outlet. If you build something similar, al
 
 It's installed and working. It turns on with the patio lights, roughly from 6:30 to 10:30 p.m. if it gets dark early, or from 7 to 11. By 11 there's nobody on the street, so that's a good time for it to turn off.
 
-Tonight is its first night. Tomorrow morning I'll check that it turned itself off.
-
 I'm happy because I finished a weekend project. It also made me realize I need an electronics corner at home, so I can build these prototypes faster.

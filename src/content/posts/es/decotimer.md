@@ -2,11 +2,11 @@
 title: 'DecoTimer: un temporizador para el fantasma inflable'
 published: 2026-10-26
 draft: false
-description: 'Mi proyecto de fin de semana: un temporizador con Arduino Nano y un relevador para que el fantasma inflable de Halloween se apague solo a las 4 horas.'
+description: 'Mi proyecto de fin de semana: un temporizador con Arduino Nano y un relevador para que el fantasma inflable de Día de Muertos se apague solo a las 4 horas.'
 tags: ['electronics', 'arduino', 'personal']
 ---
 
-Una noche me quedé despierto un rato pensando en cosas que quiero hacer, y una de ellas fue un timer para el fantasma inflable que ponemos en la casa por Halloween. No quería dejarlo prendido toda la noche ni tener que salir a apagarlo.
+Una noche me quedé despierto un rato pensando en cosas que quiero hacer, y una de ellas fue un timer para el fantasma inflable que ponemos en la casa por Día de Muertos. No quería dejarlo prendido toda la noche ni tener que salir a apagarlo.
 
 Lo terminé este fin de semana y ya está instalado.
 
@@ -78,7 +78,5 @@ El relevador conmuta los 127 V del contacto. Si haces algo parecido, trabaja sie
 ## Cómo quedó
 
 Ya está instalado y funcionando. Se prende con las luces del patio, más o menos de 6:30 a 10:30 de la noche si oscurece pronto, o de 7 a 11. A las 11 ya no hay gente en la calle, así que está bien que se apague a esa hora.
-
-Hoy es su primera noche. Mañana temprano reviso que se haya apagado solo.
 
 Estoy contento porque terminé un proyecto de fin de semana. Me di cuenta de que necesito un área para electrónica en la casa, así podría hacer estos prototipos más rápido.
