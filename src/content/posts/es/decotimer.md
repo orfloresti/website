@@ -40,30 +40,38 @@ A veces lo mejor es usar lo que ya está a la mano para terminar.
 
 El Nano y el relevador consumen unos 120 mA. El regulador del Nano se calienta un poco, pero aguanta bien las 4 horas.
 
+![Arduino Nano conectado al módulo relevador HW-482](../../../assets/posts/decotimer/arduino-relay.png)
+
 ## El código
 
-Es muy corto. Al encender prende el relevador y, cuando pasan 4 horas, lo apaga. Esta es la idea, simplificada:
+Es muy corto. Al encender prende el relevador y, cuando pasan 4 horas, lo apaga. Este es el sketch completo:
 
 ```cpp
+const int LED_PIN = LED_BUILTIN;
 const int RELAY_PIN = 2;
-const unsigned long ON_TIME_MS = 4UL * 60UL * 60UL * 1000UL; // 4 horas
+
+// 10 segundos
+// const unsigned long ON_TIME_MS = 10000;
+
+// 4 horas
+const unsigned long ON_TIME_MS = 4UL * 60UL * 60UL * 1000UL;
 
 void setup() {
+  pinMode(LED_PIN, OUTPUT);
   pinMode(RELAY_PIN, OUTPUT);
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(RELAY_PIN, HIGH);   // prende el fantasma
-  digitalWrite(LED_BUILTIN, HIGH); // testigo
+
+  digitalWrite(LED_PIN, HIGH);
+  digitalWrite(RELAY_PIN, HIGH);
+  delay(ON_TIME_MS);
+  digitalWrite(LED_PIN, LOW);
+  digitalWrite(RELAY_PIN, LOW);
 }
 
 void loop() {
-  if (millis() >= ON_TIME_MS) {
-    digitalWrite(RELAY_PIN, LOW);   // lo apaga
-    digitalWrite(LED_BUILTIN, LOW);
-  }
 }
 ```
 
-Para probar cambié el tiempo a `5000UL`, o sea 5 segundos, y así no tenía que esperar 4 horas para ver si funcionaba.
+Para probar usé la línea de 10 segundos (`10000`) en lugar de la de 4 horas, y así no tenía que esperar 4 horas para ver si funcionaba.
 
 ## Lo que me costó
 

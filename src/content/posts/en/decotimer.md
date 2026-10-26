@@ -40,30 +40,38 @@ Sometimes the best way to finish is to use what's already at hand.
 
 The Nano and the relay draw about 120 mA. The Nano's regulator gets a little warm, but it handles the 4 hours fine.
 
+![Arduino Nano wired to the HW-482 relay module](../../../assets/posts/decotimer/arduino-relay.png)
+
 ## The code
 
-It's very short. When it powers on it turns the relay on, and after 4 hours it turns it off. This is the idea, simplified:
+It's very short. When it powers on it turns the relay on, and after 4 hours it turns it off. This is the whole sketch:
 
 ```cpp
+const int LED_PIN = LED_BUILTIN;
 const int RELAY_PIN = 2;
-const unsigned long ON_TIME_MS = 4UL * 60UL * 60UL * 1000UL; // 4 hours
+
+// 10 seconds
+// const unsigned long ON_TIME_MS = 10000;
+
+// 4 hours
+const unsigned long ON_TIME_MS = 4UL * 60UL * 60UL * 1000UL;
 
 void setup() {
+  pinMode(LED_PIN, OUTPUT);
   pinMode(RELAY_PIN, OUTPUT);
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(RELAY_PIN, HIGH);   // ghost on
-  digitalWrite(LED_BUILTIN, HIGH); // indicator
+
+  digitalWrite(LED_PIN, HIGH);
+  digitalWrite(RELAY_PIN, HIGH);
+  delay(ON_TIME_MS);
+  digitalWrite(LED_PIN, LOW);
+  digitalWrite(RELAY_PIN, LOW);
 }
 
 void loop() {
-  if (millis() >= ON_TIME_MS) {
-    digitalWrite(RELAY_PIN, LOW);   // ghost off
-    digitalWrite(LED_BUILTIN, LOW);
-  }
 }
 ```
 
-To test it I changed the time to `5000UL`, 5 seconds, so I didn't have to wait 4 hours to see if it worked.
+To test it I used the 10-second line (`10000`) instead of the 4-hour one, so I didn't have to wait 4 hours to see if it worked.
 
 ## What gave me trouble
 
