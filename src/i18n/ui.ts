@@ -18,6 +18,7 @@ const en = {
   'nav.github': 'GitHub',
   'lang.label': 'Language',
   'footer.poweredBy': 'Powered by',
+  'footer.aiNote': 'Written by me, with AI assistance',
   'search.open': 'Open Search',
   'search.label': 'search',
   'search.devOnly': 'Search is only available in production builds.',
@@ -70,6 +71,7 @@ const es: Record<UiKey, string> = {
   'nav.github': 'GitHub',
   'lang.label': 'Idioma',
   'footer.poweredBy': 'Hecho con',
+  'footer.aiNote': 'Escrito por mí, con ayuda de IA',
   'search.open': 'Abrir búsqueda',
   'search.label': 'búsqueda',
   'search.devOnly':

@@ -2,9 +2,10 @@
 import siteConfig from '~/site.config'
 import SocialLinks from '~/components/SocialLinks.astro'
 import { getCurrentYear } from '~/utils'
-import { getLangFromUrl, useTranslations } from '~/i18n'
+import { getLangFromUrl, localePath, useTranslations } from '~/i18n'
 
-const t = useTranslations(getLangFromUrl(Astro.url))
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <footer class="mt-auto pt-9 md:pt-11 grow-0 flex flex-col gap-6 items-center justify-between max-w-full text-foreground/80">
@@ -13,6 +14,8 @@ const t = useTranslations(getLangFromUrl(Astro.url))
     <span class="my-1">
       {siteConfig.author} © {getCurrentYear()}
     </span>
+    <span class="mx-5 hidden md:block"> :: </span>
+    <a class="my-1 underline" href={localePath(lang, '/about')}>{t('footer.aiNote')}</a>
     <span class="mx-5 hidden md:block"> :: </span>
     <span class="my-1">
       {t('footer.poweredBy')}{' '}

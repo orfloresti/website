@@ -10,3 +10,5 @@ In 2020 I co-founded a small tech company. We designed circuits, maintained indu
 Today I work as a software developer. My strength is the frontend with Angular, React and TypeScript, and I also build backend and infrastructure with Python, FastAPI, PostgreSQL, AWS and Terraform. I care about building software for real, concrete problems and about writing clear specs before writing code.
 
 Outside work I read, play chess, ride my bike early in the morning and spend time with my family.
+
+I write everything on this blog myself. I use AI as a tool for code, technical review and proofreading, but the ideas, the decisions and the final words are mine.

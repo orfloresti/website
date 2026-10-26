@@ -10,3 +10,5 @@ En 2020 cofundé una pequeña empresa de tecnología. Diseñamos circuitos, dimo
 Hoy trabajo como desarrollador de software. Mi fuerte es el frontend con Angular, React y TypeScript, y también construyo backend e infraestructura con Python, FastAPI, PostgreSQL, AWS y Terraform. Me interesa construir software para problemas reales y concretos, y escribir especificaciones claras antes de programar.
 
 Fuera del trabajo leo, juego ajedrez, salgo en bicicleta temprano y paso tiempo con mi familia.
+
+Todo lo que publico en este blog lo escribo yo. Uso IA como herramienta para el código, la revisión técnica y la corrección de textos, pero las ideas, las decisiones y las palabras finales son mías.
